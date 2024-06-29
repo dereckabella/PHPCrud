@@ -14,12 +14,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $address = $_POST['address'];
 
-    $sql = "INSERT INTO users (name, email, phone) VALUES ('$name', '$email', '$phone')";
+    $sql = "INSERT INTO users (name, email, phone, address) VALUES ('$name', '$email', '$phone', '$address')";
 
     if ($conn->query($sql) === TRUE) {
-        header("Location: newindex.php"); // Redirect to read.php after successful creation
-        exit(); // Ensure no further code is executed
+        header("Location: newindex.php"); 
+        exit(); 
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -39,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         Name: <input type="text" name="name" required><br>
         Email: <input type="email" name="email" required><br>
         Phone: <input type="phone" name="phone" required><br>
+        Address: <input type="address" name="address" required><br>
         <input type="submit" value="Create">
     </form>
 </body>

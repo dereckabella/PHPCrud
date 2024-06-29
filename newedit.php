@@ -24,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $address = $_POST['address'];
 
-    $sql = "UPDATE users SET name='$name', email='$email', phone='$phone' WHERE id=$id";
+    $sql = "UPDATE users SET name='$name', email='$email', phone='$phone', address='$address' WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: newindex.php"); // Redirect to read.php after successful update
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Retrieve the user data from the database
-$sql = "SELECT name, email, phone FROM users WHERE id=$id";
+$sql = "SELECT name, email, phone, address FROM users WHERE id=$id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -59,6 +60,7 @@ $conn->close();
         Name: <input type="text" name="name" value="<?php echo $row['name']; ?>" required><br>
         Email: <input type="email" name="email" value="<?php echo $row['email']; ?>" required><br>
         Phone: <input type="text" name="phone" value="<?php echo $row['phone']; ?>" required><br>
+        Address: <input type="text" name="address" value="<?php echo $row['address']; ?>" required><br>
         <input type="submit" value="Update">
     </form>
 </body>

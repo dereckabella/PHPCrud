@@ -16,8 +16,8 @@ $id = $_GET['id'];
 $sql = "DELETE FROM users WHERE id=$id";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: newindex.php"); // Redirect to read.php after successful deletion
-    exit(); // Ensure no further code is executed
+    header("Location: newindex.php"); 
+    exit();
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

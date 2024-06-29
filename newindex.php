@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, name, email, phone, created_at FROM users";
+$sql = "SELECT id, name, email, phone, address, created_at FROM users";
 $result = $conn->query($sql);
 ?>
 
@@ -31,6 +31,7 @@ $result = $conn->query($sql);
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Address</th>
             <th>Created At</th>
             <th>Actions</th>
         </tr>
@@ -42,6 +43,7 @@ $result = $conn->query($sql);
                 echo "<td>".$row["name"]."</td>";
                 echo "<td>".$row["email"]."</td>";
                 echo "<td>".$row["phone"]."</td>";
+                echo "<td>".$row["address"]."</td>";
                 echo "<td>".$row["created_at"]."</td>";
                 echo "<td><a href='newedit.php?id=".$row["id"]."'>Edit</a> | <a href='newdelete.php?id=".$row["id"]."'>Delete</a></td>";
                 echo "</tr>";
